@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:id="@+id/mainMenu">
+        <item
+            android:id="@+id/history"
+            android:title="История"
+            android:orderInCategory="1"/>
+        <item
+            android:id="@+id/graph"
+            android:title="График"
+            android:orderInCategory="2"/>
+        <item
+            android:id="@+id/archive"
+            android:title="Архив"
+            android:orderInCategory="3"/>
+        <item
+            app:showAsAction="always"
+            app:actionViewClass="android.widget.SearchView"
+            android:icon="@drawable/ic_search_black_24dp"
+            android:id="@+id/searchSection"
+            android:title="Поиск"/>
+    </group>
+</menu>

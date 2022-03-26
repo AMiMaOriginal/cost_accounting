@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Учёт расходов</string>
+    <string name="add">+ Добавить</string>
+    <string name="remove">Удалить</string>
+    <string name="spentAll">Потрачено всего:</string>
+    <string name="name">Название:</string>
+    <string name="price">Цена</string>
+</resources>

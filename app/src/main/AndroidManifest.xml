@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.AMiMa.cost_accounting">
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/notepad"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/notepad"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity
+            android:name="com.AMiMa.cost_accounting.ui.AddPrice"
+            android:exported="false" />
+        <activity
+            android:name="com.AMiMa.cost_accounting.ui.AddElement"
+            android:exported="false" />
+        <activity android:name="com.AMiMa.cost_accounting.ui.History" />
+        <activity android:name="com.AMiMa.cost_accounting.ui.Archive" />
+        <activity android:name="com.AMiMa.cost_accounting.ui.Graph" />
+        <activity android:name="com.AMiMa.cost_accounting.ui.Products" />
+        <activity android:name="com.AMiMa.cost_accounting.ui.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

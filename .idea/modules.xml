@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MyH.iml" filepath="$PROJECT_DIR$/.idea/modules/MyH.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/aChartEngine/MyH.aChartEngine.iml" filepath="$PROJECT_DIR$/.idea/modules/aChartEngine/MyH.aChartEngine.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/MyH.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/MyH.app.iml" />
+    </modules>
+  </component>
+</project>
