@@ -34,16 +34,7 @@ public class AddPrice extends AppCompatActivity implements MenuItem.OnMenuItemCl
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_price);
 
-        Toolbar toolbar = findViewById(R.id.toolbar_actionbar);
-        toolbar.setTitle("");
-        titleToolbar = findViewById(R.id.titleToolbar);
-        titleToolbar.setText("Новый расход на " + getIntent().getStringExtra("name"));
-        titleToolbar.setEllipsize(TextUtils.TruncateAt.MARQUEE);
-        titleToolbar.setSingleLine(true);
-        titleToolbar.setMarqueeRepeatLimit(-1);
-        titleToolbar.setSelected(true);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        initToolbar();
 
         inputPrice = findViewById(R.id.priceElement);
         inputPrice.setOnKeyListener(this);
@@ -83,6 +74,19 @@ public class AddPrice extends AppCompatActivity implements MenuItem.OnMenuItemCl
             return true;
         }
         return false;
+    }
+
+    private void initToolbar(){
+        Toolbar toolbar = findViewById(R.id.toolbar_actionbar);
+        toolbar.setTitle("");
+        titleToolbar = findViewById(R.id.titleToolbar);
+        titleToolbar.setText("Новый расход на " + getIntent().getStringExtra("name"));
+        titleToolbar.setEllipsize(TextUtils.TruncateAt.MARQUEE);
+        titleToolbar.setSingleLine(true);
+        titleToolbar.setMarqueeRepeatLimit(-1);
+        titleToolbar.setSelected(true);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     private void addPrice(){

@@ -96,11 +96,7 @@ public class MainActivity extends AppCompatActivity implements com.AMiMa.cost_ac
         super.onCreate(bundle);
         setContentView(R.layout.activity_sections);
 
-        toolbar = (androidx.appcompat.widget.Toolbar) findViewById(R.id.toolbar_actionbar);
-        toolbar.setTitle("");
-        setSupportActionBar(toolbar);
-        titleToolbar = findViewById(R.id.titleToolbar);
-        titleToolbar.setText(R.string.app_name);
+        initToolbar();
 
         callback = this;
 
@@ -113,7 +109,7 @@ public class MainActivity extends AppCompatActivity implements com.AMiMa.cost_ac
         firstLaunch = sPref.getBoolean("firstLaunch", true);
         reset = sPref.getBoolean("reset", false);
         if (reset) {
-            init();
+            initViews();
             workWithData.reset(dataMain);
             resetOnCreate(false);
             wasReset();
@@ -140,7 +136,7 @@ public class MainActivity extends AppCompatActivity implements com.AMiMa.cost_ac
         searchSection = (SearchView) menu.findItem(R.id.searchSection).getActionView();
         searchSection.setOnCloseListener(this);
         searchSection.setOnSearchClickListener(this);
-        init();
+        initViews();
         searchSection.setOnQueryTextListener(new SearchView.OnQueryTextListener(){
 
             @Override
@@ -252,7 +248,15 @@ public class MainActivity extends AppCompatActivity implements com.AMiMa.cost_ac
         }
     }
 
-    private void init(){
+    private void initToolbar(){
+        toolbar = (androidx.appcompat.widget.Toolbar) findViewById(R.id.toolbar_actionbar);
+        toolbar.setTitle("");
+        setSupportActionBar(toolbar);
+        titleToolbar = findViewById(R.id.titleToolbar);
+        titleToolbar.setText(R.string.app_name);
+    }
+
+    private void initViews(){
         menuSettings = new MenuSettings(menu, callback, titleToolbar, workWithData, dataMain, getLifecycle());
         adapterMain = new AdapterForMain(this, dataMain, menuSettings, this);
         viewElement = (RecyclerView) findViewById(R.id.listSections);

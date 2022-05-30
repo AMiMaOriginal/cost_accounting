@@ -41,7 +41,17 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7d38c6ba-1288-4152-bf3d-3d83704d3cf5" name="Default Changelist" comment="Release??" />
+    <list default="true" id="7d38c6ba-1288-4152-bf3d-3d83704d3cf5" name="Default Changelist" comment="Initial commit">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/AMiMa/cost_accounting/logic/WorkWithData.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/AMiMa/cost_accounting/logic/WorkWithData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/AMiMa/cost_accounting/ui/AddElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/AMiMa/cost_accounting/ui/AddElement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/AMiMa/cost_accounting/ui/AddPrice.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/AMiMa/cost_accounting/ui/AddPrice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/AMiMa/cost_accounting/ui/Archive.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/AMiMa/cost_accounting/ui/Archive.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/AMiMa/cost_accounting/ui/History.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/AMiMa/cost_accounting/ui/History.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/AMiMa/cost_accounting/ui/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/AMiMa/cost_accounting/ui/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/AMiMa/cost_accounting/ui/Products.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/AMiMa/cost_accounting/ui/Products.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/menu_product.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_product.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -583,7 +593,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647452798742</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Initial commit">
+      <created>1648319237065</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1648319237065</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -617,13 +634,13 @@
     <MESSAGE value="Hard sex с интерфейсом почти закончен." />
     <MESSAGE value="Осталось только настроить меню и, возможно, историю." />
     <MESSAGE value="Вот теперь почти точно осталось только настроить меню и, возможно, историю." />
-    <MESSAGE value="Initial commit" />
     <MESSAGE value="Много чего сделано... Осталось чуть-чуть..." />
     <MESSAGE value="Начинаю переписывать БД" />
     <MESSAGE value="Осталось сделать интерфейс для архива и рефакторинг... Вроде бы всё..." />
     <MESSAGE value="Вроде бы всё готово к релизу. Остаётся ждать интерфейс одного экрана." />
     <MESSAGE value="Release?" />
     <MESSAGE value="Release??" />
-    <option name="LAST_COMMIT_MESSAGE" value="Release??" />
+    <MESSAGE value="Initial commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Initial commit" />
   </component>
 </project>

@@ -59,7 +59,8 @@ import com.AMiMa.cost_accounting.callbacks.MoveToAnotherActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Products extends AppCompatActivity implements View.OnClickListener, com.AMiMa.cost_accounting.callbacks.View, CallbackForWorkWithMenu, MoveToAnotherActivity.fromProducts{
+public class Products extends AppCompatActivity implements View.OnClickListener, com.AMiMa.cost_accounting.callbacks.View,
+        CallbackForWorkWithMenu, MoveToAnotherActivity.fromProducts, SearchView.OnCloseListener {
 
     private DBHelper dbHelper;
     private RecyclerView listData;
@@ -84,16 +85,7 @@ public class Products extends AppCompatActivity implements View.OnClickListener,
         dbHelper = new DBHelper(this);
         workWithData = new Presenter(dbHelper, this);
 
-        toolbar = findViewById(R.id.toolbar_actionbar);
-        titleToolbar = findViewById(R.id.titleToolbar);
-        toolbar.setTitle("");
-        titleToolbar.setText("Раздел: " + nameThisSection);
-        titleToolbar.setEllipsize(TextUtils.TruncateAt.MARQUEE);
-        titleToolbar.setSingleLine(true);
-        titleToolbar.setMarqueeRepeatLimit(-1);
-        titleToolbar.setSelected(true);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        initToolbar();
 
         addProduct = findViewById(R.id.addProduct);
         addProduct.setOnClickListener(this);
@@ -105,6 +97,8 @@ public class Products extends AppCompatActivity implements View.OnClickListener,
         this.menu = menu;
         initAdapter();
         searchProduct = (SearchView) menu.findItem(R.id.searchProduct).getActionView();
+        searchProduct.setOnCloseListener(this);
+        searchProduct.setOnSearchClickListener(this);
         searchProduct.setOnQueryTextListener(new SearchView.OnQueryTextListener(){
 
             @Override
@@ -125,6 +119,12 @@ public class Products extends AppCompatActivity implements View.OnClickListener,
             }
         });
         return true;
+    }
+
+    @Override
+    public boolean onClose() {
+        titleToolbar.setText("Раздел: " + nameThisSection);
+        return false;
     }
 
     @Override
@@ -182,9 +182,14 @@ public class Products extends AppCompatActivity implements View.OnClickListener,
 
     @Override
     public void onClick(View view) {
-        Intent intent = new Intent(this, AddElement.class);
-        intent.putExtra("isSection", false);
-        moveTo(intent);
+        switch (view.getId()){
+            case R.id.addProduct:
+                Intent intent = new Intent(this, AddElement.class);
+                intent.putExtra("isSection", false);
+                moveTo(intent);
+            case R.id.searchProduct:
+                titleToolbar.setText("");
+        }
     }
 
     @Override
@@ -210,6 +215,19 @@ public class Products extends AppCompatActivity implements View.OnClickListener,
         listData.setAdapter(adapterProduct);
 
         getListElement();
+    }
+
+    private void initToolbar(){
+        toolbar = findViewById(R.id.toolbar_actionbar);
+        titleToolbar = findViewById(R.id.titleToolbar);
+        toolbar.setTitle("");
+        titleToolbar.setText("Раздел: " + nameThisSection);
+        titleToolbar.setEllipsize(TextUtils.TruncateAt.MARQUEE);
+        titleToolbar.setSingleLine(true);
+        titleToolbar.setMarqueeRepeatLimit(-1);
+        titleToolbar.setSelected(true);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     public void addPrice(View view){

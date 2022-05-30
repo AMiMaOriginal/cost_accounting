@@ -127,30 +127,30 @@ public class WorkWithData {
             return null;
         }
 
-        Cursor cursor = sQLiteDatabase.query(DBHelper.temp_name, new String[]{DBHelper.element}, null, null, null, null, null);
+        if (isNotRepeat(DBHelper.temp_name, name) && isNotRepeat(DBHelper.mainTable, name)) {
+            return finishAddElement(name);
+        } else {
+            Toast toast = Toast.makeText(context, "Такое название уже существует", Toast.LENGTH_LONG);
+            toast.show();
+        }
+
+        return null;
+    }
+
+    private Boolean isNotRepeat(String tableName, String nameElement){
+        boolean isNotRepeat = true;
+        SQLiteDatabase sqLiteDatabase = dbHelper.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.query(tableName, new String[]{DBHelper.element}, null, null, null, null, null);
         int names = cursor.getColumnIndex(DBHelper.element);
         if (cursor.moveToFirst()) {
-            boolean isNotRepeat = true;
             do {
-                if (name.equals(cursor.getString(names))) {
+                if (nameElement.equals(cursor.getString(names))) {
                     isNotRepeat = false;
                     break;
                 }
             } while (cursor.moveToNext());
-
-            if (isNotRepeat) {
-                return finishAddElement(name);
-            } else {
-                Toast toast = Toast.makeText(context, "Такое название уже существует", Toast.LENGTH_LONG);
-                toast.show();
-            }
-            sQLiteDatabase.close();
-            cursor.close();
-
-        } else {
-            return finishAddElement(name);
         }
-        return null;
+        return isNotRepeat;
     }
 
     private Element finishAddElement(String name) {

@@ -46,28 +46,23 @@ public class Archive extends AppCompatActivity {
 
     private List<Element> data = new ArrayList<>();
     private DBHelper dbHelper;
+    private AdapterForArchive adapter;
 
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setContentView(R.layout.activity_archive);
 
-        Toolbar toolbar = findViewById(R.id.historyToolbar);
-        toolbar.setTitle("Архив");
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        initToolbar();
 
         dbHelper = new DBHelper(this);
+
+        initRecyclerView();
+
+        initData();
+    }
+
+    private void initData(){
         WorkWithData workWithData = new WorkWithData(dbHelper);
-
-        AdapterForArchive adapter = new AdapterForArchive(this, data);
-        RecyclerView rv = findViewById(R.id.archive_data);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        rv.setLayoutManager(linearLayoutManager);
-        DividerItemDecoration itemDecoration = new DividerItemDecoration(this, linearLayoutManager.getOrientation());
-        rv.addItemDecoration(itemDecoration);
-        rv.setAdapter(adapter);
-
         DBHelper.temp_name = "archive";
         SQLiteDatabase sQLiteDatabase = dbHelper.getReadableDatabase();
         Cursor cursor = sQLiteDatabase.query(DBHelper.temp_name, new String[]{DBHelper.element, DBHelper.price}, null, null, null, null, null);
@@ -82,6 +77,24 @@ public class Archive extends AppCompatActivity {
         adapter.notifyDataSetChanged();
         sQLiteDatabase.close();
         cursor.close();
+    }
+
+    private void initToolbar(){
+        Toolbar toolbar = findViewById(R.id.historyToolbar);
+        toolbar.setTitle("Архив");
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    private void initRecyclerView(){
+        adapter = new AdapterForArchive(this, data);
+        RecyclerView rv = findViewById(R.id.archive_data);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        rv.setLayoutManager(linearLayoutManager);
+        DividerItemDecoration itemDecoration = new DividerItemDecoration(this, linearLayoutManager.getOrientation());
+        rv.addItemDecoration(itemDecoration);
+        rv.setAdapter(adapter);
     }
 
     public void viewDataInHistory(View view) {

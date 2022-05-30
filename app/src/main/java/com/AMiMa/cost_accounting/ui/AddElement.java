@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.AMiMa.cost_accounting.R;
 
@@ -29,12 +30,7 @@ public class AddElement extends AppCompatActivity implements MenuItem.OnMenuItem
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_element);
 
-        Toolbar toolbar = findViewById(R.id.toolbar_actionbar);
-        titleToolbar = findViewById(R.id.titleToolbar);
-        toolbar.setTitle("");
-        titleToolbar.setText("Добавить");
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        initToolbar();
 
         nameElement = findViewById(R.id.nameElement);
         nameElement.setOnKeyListener(this);
@@ -54,12 +50,20 @@ public class AddElement extends AppCompatActivity implements MenuItem.OnMenuItem
         return super.onCreateOptionsMenu(menu);
     }
 
+    private void initToolbar(){
+        Toolbar toolbar = findViewById(R.id.toolbar_actionbar);
+        titleToolbar = findViewById(R.id.titleToolbar);
+        toolbar.setTitle("");
+        titleToolbar.setText("Добавить");
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
 
     private void addElement(){
         String n = nameElement.getText().toString();
-        if (isSection){
+        if (isSection) {
             MainActivity.workWithData.addElement(n.toUpperCase(Locale.ROOT), this);
-        }else{
+        } else {
             Products.workWithData.addElement(n.toUpperCase(Locale.ROOT), this);
         }
         finish();

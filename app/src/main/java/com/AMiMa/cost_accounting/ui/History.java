@@ -39,18 +39,36 @@ import java.util.List;
 
 public class History extends AppCompatActivity {
 
+    private List<String> listProducts = new ArrayList<>();
+    private List<String> listPrices = new ArrayList<>();
+
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setContentView(R.layout.activity_history);
 
-        Toolbar toolbar = findViewById(R.id.toolbar_actionbar);
-        toolbar.setTitle("История");
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        initToolbar();
 
-        List<String> listProducts = new ArrayList<>();
-        List<String> listPrices = new ArrayList<>();
+        initData();
 
+        initRecyclerView();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        finish();
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void initRecyclerView(){
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        AdapterForHistory adapter = new AdapterForHistory(listProducts, listPrices, this);
+        RecyclerView recyclerView = findViewById(R.id.listDataInHistory);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setAdapter(adapter);
+    }
+
+    private void initData(){
         DBHelper dBHelper = new DBHelper(this);
         DBHelper.temp_name = "history";
 
@@ -60,19 +78,13 @@ public class History extends AppCompatActivity {
             listProducts.add(data.get(i).getName());
             listPrices.add(data.get(i).getPrice());
         }
-
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        AdapterForHistory adapter = new AdapterForHistory(listProducts, listPrices, this);
-        RecyclerView recyclerView = findViewById(R.id.listDataInHistory);
-        recyclerView.setLayoutManager(linearLayoutManager);
-        recyclerView.setAdapter(adapter);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        finish();
-        return super.onOptionsItemSelected(item);
+    private void initToolbar(){
+        Toolbar toolbar = findViewById(R.id.toolbar_actionbar);
+        toolbar.setTitle("История");
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 }
 
